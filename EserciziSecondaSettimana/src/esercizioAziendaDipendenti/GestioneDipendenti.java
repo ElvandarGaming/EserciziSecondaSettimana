@@ -21,10 +21,10 @@ public class GestioneDipendenti {
 		double paga2 = Dipendente.calcolaPaga(gianfranco,5);
 		double paga3 = Dipendente.calcolaPaga(tommaso,5);
 		double paga4 = Dipendente.calcolaPaga(francesco,5);
-		System.out.println(paga1);
-		System.out.println(paga2);
-		System.out.println(paga3);
-		System.out.println(paga4);
+		//System.out.println(paga1);
+		//System.out.println(paga2);
+		//System.out.println(paga3);
+		//System.out.println(paga4);
 		double sommaStipendi = paga1 + paga2 + paga3 + paga4;
 		System.out.println(sommaStipendi);
 	}
