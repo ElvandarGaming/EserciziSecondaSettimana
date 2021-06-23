@@ -12,7 +12,7 @@ public class Dipendente {
 		return matricola;
 	}
 
-	public double getStipendio() {
+	public double  getStipendio() {
 		return stipendio;
 	}
 
@@ -46,11 +46,10 @@ public class Dipendente {
 
 	public Dipendente(String matricola, double stipendio, double importoOrarioStraordinario, Livello level,
 			Dipartimento department) {
-		this.matricola = matricola;
+		this(matricola, department);
 		this.stipendio = stipendio;
 		this.importoOrarioStraordinario = importoOrarioStraordinario;
 		this.level = level;
-		this.department = department;
 	}
 
 	public void stampaDatiDipendente() {
@@ -66,19 +65,16 @@ public class Dipendente {
 		if (dipendente == Livello.OPERAIO) {
 			this.level = Livello.IMPIEGATO;
 			this.stipendio=stipendioBase*1.2;
-			return level;
 		} else if (dipendente == Livello.IMPIEGATO) {
 			this.level = Livello.QUADRO;
 			this.stipendio=stipendioBase*1.5;
-			return level;
 		} else if (dipendente == Livello.QUADRO) {
 			this.level = Livello.DIRIGENTE;
 			this.stipendio=stipendioBase*2;
-			return level;
 		} else /*if (dipendente == Livello.DIRIGENTE)*/ {
 			System.out.println("Errore, è già dirigente");
-			return level;
 		}
+		return level;
 	}
 
 	public static double calcolaPaga(Dipendente dipendente) {
