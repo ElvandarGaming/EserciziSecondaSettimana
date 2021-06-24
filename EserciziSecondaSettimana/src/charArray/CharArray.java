@@ -5,98 +5,80 @@ import java.util.Arrays;
 public class CharArray {
 
 	public static void main(String[] args) {
-		// int[] array = { 1, 4, 1, 4, 3, 1,3,3,5,2,1,4};
-		int[] array = { 4,4, 8 ,5,6, 7, 4, 4, 1, 4, 8, 1, 4, 4, 7, 6, 5, 4, 1, 5, 1 };
-		System.out.println(findMode(array)); 
-
-		//System.out.println(simpleFindMode(array));
-		//ContaInt[] dc = contaInt(array);
-		//System.out.println(findMaxNum(dc));
-
+		int[] array = { 4, 4, 8, 5, 6, 7, 8, 7, 1, 4, 8, 1, 4, 6, 7, 6, 5, 4, 1, 5, 1 };
+		System.out.println(findMode(array));
+		
+		findMaxNum(array);
+		findMinNum(array);
+		
+		//simple find mode non è simple, e sputtana l'array, ma fa il suo lavoro
+		System.out.println(simpleFindMode(array));
+		System.out.println(Arrays.toString(array));
 		
 	}
-
-	public static int findMaxNum(ContaInt[] x) {
+	//mio
+	public static int findMaxNum(int[] a) {
+		// trova il numero ripetuto piu volte, se ci sono due numeri che compaiono lo
+		// stesso numero di volte mostra solo il primo a comparire la prima volta nell'array
+		ContaInt[] x = contaInt(a);
+		
 		int max = x[0].qta;
 		int num = x[0].numero;
-		for(int i=1; i<x.length;i++) {
-			if(max<x[i].qta) {
+		for (int i = 1; i < x.length; i++) {
+
+			if (x[i] == null) {
+				continue;
+			} else if (max < x[i].qta) {
+
 				max = x[i].qta;
 				num = x[i].numero;
 			}
 		}
-		System.out.println("numero ripetizioni " + max);
+		System.out.println("numero ripetizioni " + max + " per il numero " + num);
 		return num;
 	}
-	
-	public static ContaInt[] contaInt(int[] array) {
-		int[] a = new int[array.length];
-		for (int i = 0; i < a.length; i++) {
-			a[i] = array[i];
+	//mio
+	public static int findMinNum(int[] a) {
+		// trova il numero ripetuto meno volte, se ci sono due numeri che compaiono lo
+		// stesso numero di volte mostra solo il primo a comparire la prima volta nell'array
+		ContaInt[] x = contaInt(a);
+		
+		int min = x[0].qta;
+		int num = x[0].numero;
+		for (int i = 1; i < x.length; i++) {
+
+			if (x[i] == null) {
+				continue;
+			} else if (min >= x[i].qta) {
+				min = x[i].qta;
+				num = x[i].numero;
+			}
 		}
-		// copia array
-
+		System.out.println("numero ripetizioni " + min + " per il numero " + num);
+		return num;
+	}
+	//mio
+	private static ContaInt[] contaInt(int[] a) {
 		ContaInt[] h = new ContaInt[a.length];
-		
 		// creazione array di oggetti conta int
-		
-		for (int i = 0, t=0; i < a.length - 1; i++, t++) {
 
-			h[t] = new ContaInt(a[i]);
-
-			for (int j = i; j > 0; j--) {
-				if (h[t].numero == a[j]) {
+		for (int i = 0; i < a.length; i++) {
+			for (int t = 0; t < h.length; t++) {
+				if (h[t] == null) {
+					h[t] = new ContaInt(a[i]);
+					break;
+				} else if (h[t].numero == a[i]) {
 					h[t].qta++;
-					for (int s = j; s < counter - 1; s++) {
-						a[s] = a[s + 1];
-						a[counter - 1] = 404;
-
-					}
-
+					break;
 				}
 
-				//System.out.println(Arrays.toString(a));
 			}
 
 		}
-		//System.out.println(h[0].qta);
-		//System.out.println("questo quaaaa" + h[1].qta);
-		//System.out.println("questo qui" + h[2].qta);
-		// System.out.println(Arrays.toString(array));
 		return h;
 	}
 
-	public static String posizioni(int[] a) {
-		int b = a[0];
-		int f = 0;
-
-		for (int i = 0; i < a.length; i++) {
-			boolean check = a[i] == b;
-			if (check) {
-				// h[f] = i;
-				f++;
-				// i=a.length;
-			}
-		}
-
-		int[] h = new int[f];
-		f = 0;
-		// System.out.println(f);
-		for (int i = 0; i < a.length; i++) {
-			boolean check = a[i] == b;
-			if (check) {
-				h[f] = i;
-
-				f++;
-				// i=a.length;
-			}
-
-		}
-		// System.out.println(Arrays.toString(h));
-		return Arrays.toString(h);
-
-	}
-
+	//prof
 	public static int findMode(int[] input) {
 		ContaInt[] vc = new ContaInt[input.length];
 		int distinct = 0;
@@ -121,7 +103,7 @@ public class CharArray {
 		System.out.println("numero ripetizioni " + countMax);
 		return vc[posMax].numero;
 	}
-
+	//prof
 	public static int contains(ContaInt[] vc, int x) {
 		for (int i = 0; i < vc.length; i++) {
 			if (vc[i] == null) {
@@ -133,14 +115,14 @@ public class CharArray {
 		}
 		return -1;
 	}
-
+	//prof
 	public static int simpleFindMode(int[] input) {
 		int countMax = 0;
-		int posMax = 0;
+		// int posMax = 0;
 		int modeValue = input[0];
 
-		for (int i = 0; i < input.length - 1 ; i++) {
-			if(input[i]==Integer.MIN_VALUE){
+		for (int i = 0; i < input.length - 1; i++) {
+			if (input[i] == Integer.MIN_VALUE) {
 				continue;
 			}
 			int count = 1;
@@ -153,14 +135,14 @@ public class CharArray {
 					count++;
 				}
 			}
-			if(count>= countMax) {
+			if (count >= countMax) {
 				countMax = count;
-				posMax=i;
-				modeValue= input[i];
+				// posMax=i;
+				modeValue = input[i];
 			}
-			 //input[i] = Integer.MIN_VALUE;
+			// input[i] = Integer.MIN_VALUE;
 		}
-		
+
 		return modeValue;
 	}
 }
