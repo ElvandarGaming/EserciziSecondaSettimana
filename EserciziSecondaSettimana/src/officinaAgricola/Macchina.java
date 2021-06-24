@@ -1,11 +1,11 @@
 package officinaAgricola;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Macchina {
 	protected String marca;
 	protected int numeroOrdine;
-	protected LocalDate dataIngresso;
+	protected LocalDateTime dataIngresso;
 	protected final int MAX_LAVORAZIONI = 10;
 	protected Lavorazione[] maxLavorazioni = new Lavorazione[MAX_LAVORAZIONI];
 
@@ -49,7 +49,7 @@ public class Macchina {
 	public double costoRiparazione() {
 		double costoRiparazione = 0;
 		for (int i = 0; i < maxLavorazioni.length; i++) {
-			if(maxLavorazioni[i]!=null) {
+			if (maxLavorazioni[i] != null) {
 				costoRiparazione = costoRiparazione + maxLavorazioni[i].getCosto();
 
 			}
@@ -57,24 +57,37 @@ public class Macchina {
 		return costoRiparazione;
 	}
 
-	
 	public String getMarca() {
 		return marca;
 	}
 
-	
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
 
-	public LocalDate getDataIngresso() {
+	public LocalDateTime getDataIngresso() {
 		return dataIngresso;
 	}
 
-	
 	public int getMAX_LAVORAZIONI() {
 		return MAX_LAVORAZIONI;
 	}
+	
+	//
+	//String nome = cl.getName();
+	//p instanceof Macchina
+	
+	public boolean equals(Object t) {
+		if (!(t instanceof Macchina)) {
+			return false;
+		}
+		Macchina nuova = (Macchina) t;
 
+		if (this.marca.equals(nuova.marca) && this.numeroOrdine==nuova.numeroOrdine) {
+			return true;
+		}
+			return false;
+		
+	}
 
 }

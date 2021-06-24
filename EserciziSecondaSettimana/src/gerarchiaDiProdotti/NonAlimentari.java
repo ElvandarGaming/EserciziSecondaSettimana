@@ -1,7 +1,7 @@
 package gerarchiaDiProdotti;
 
 public class NonAlimentari extends Prodotto {
-	protected CategoriaMerceologica categoriaMerceologica;
+	private CategoriaMerceologica categoriaMerceologica;
 
 	public NonAlimentari(String uniqueCode, String shortDescription, double price,
 			CategoriaMerceologica categoriaMerceologica) {

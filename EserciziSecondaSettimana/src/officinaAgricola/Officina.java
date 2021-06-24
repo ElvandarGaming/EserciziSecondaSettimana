@@ -1,6 +1,6 @@
 package officinaAgricola;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Officina {
 
@@ -16,7 +16,7 @@ public class Officina {
 		for (int i = 0; i < postiOfficina.length; i++) {
 			if (postiOfficina[i] == null) {
 				postiOfficina[i] = macchina;
-				macchina.dataIngresso = LocalDate.now();
+				macchina.dataIngresso = LocalDateTime.now();
 				macchina.numeroOrdine = contatoreOrdine;
 				contatoreOrdine++;
 				return true;
