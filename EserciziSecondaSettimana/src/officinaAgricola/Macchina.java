@@ -72,22 +72,22 @@ public class Macchina {
 	public int getMAX_LAVORAZIONI() {
 		return MAX_LAVORAZIONI;
 	}
-	
+
 	//
-	//String nome = cl.getName();
-	//p instanceof Macchina
-	
+	// String nome = cl.getName();
+	// p instanceof Macchina
+
 	public boolean equals(Object t) {
 		if (!(t instanceof Macchina)) {
 			return false;
 		}
 		Macchina nuova = (Macchina) t;
 
-		if (this.marca.equals(nuova.marca) && this.numeroOrdine==nuova.numeroOrdine) {
+		if (this.marca.equals(nuova.marca) && this.numeroOrdine == nuova.numeroOrdine) {
 			return true;
 		}
-			return false;
-		
+		return false;
+
 	}
 
 }
