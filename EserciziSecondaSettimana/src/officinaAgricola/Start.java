@@ -7,11 +7,11 @@ public class Start {
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		Officina pippo = new Officina();
-		Macchina brum5 = new Decespugliatore("Ford",true);
+		//Macchina brum5 = new Decespugliatore("Ford",true);
 		Tosaerba brum3 = new Tosaerba("Ford", 16);
-		Macchina brum4 = new Motozappa("Ford",2, 85);
+		//Macchina brum4 = new Motozappa("Ford",2, 85);
 		Macchina brum = new Macchina("Ford");
-		Macchina brum6 = new Macchina("cucci");
+		//Macchina brum6 = new Macchina("cucci");
 		MacchinaRuotata ggg= new Tosaerba("husquìvarna",4);
 		
 		pippo.registraMacchina(brum);
@@ -59,6 +59,7 @@ public class Start {
 		
 		System.out.println(brum.dataIngresso);
 		*/
+		console.close();
 	}
 
 }
